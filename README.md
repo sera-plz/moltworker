@@ -138,14 +138,16 @@ By default, clawdbot data (configs, paired devices, conversation history) is los
 
 ```bash
 # R2 Access Key ID
-npx wrangler secret put AWS_ACCESS_KEY_ID
+npx wrangler secret put R2_ACCESS_KEY_ID
 
 # R2 Secret Access Key
-npx wrangler secret put AWS_SECRET_ACCESS_KEY
+npx wrangler secret put R2_SECRET_ACCESS_KEY
 
-# Your Cloudflare Account ID (found in dashboard URL or R2 overview)
+# Your Cloudflare Account ID
 npx wrangler secret put CF_ACCOUNT_ID
 ```
+
+To find your Account ID: Go to the [Cloudflare Dashboard](https://dash.cloudflare.com/), click the three dots menu next to your account name, and select "Copy Account ID".
 
 ### How It Works
 
@@ -208,8 +210,8 @@ npm run deploy
 | `CLAWDBOT_GATEWAY_TOKEN` | Yes | Gateway token for authentication (pass via `?token=` query param) |
 | `DEV_MODE` | No | Set to `true` to skip CF Access auth + device pairing (local dev only) |
 | `DEBUG_ROUTES` | No | Set to `true` to enable `/debug/*` routes |
-| `AWS_ACCESS_KEY_ID` | No | R2 access key for persistent storage |
-| `AWS_SECRET_ACCESS_KEY` | No | R2 secret key for persistent storage |
+| `R2_ACCESS_KEY_ID` | No | R2 access key for persistent storage |
+| `R2_SECRET_ACCESS_KEY` | No | R2 secret key for persistent storage |
 | `CF_ACCOUNT_ID` | No | Cloudflare account ID for R2 |
 | `TELEGRAM_BOT_TOKEN` | No | Telegram bot token |
 | `DISCORD_BOT_TOKEN` | No | Discord bot token |
@@ -224,7 +226,7 @@ npm run deploy
 
 **Slow first request:** Cold starts take 1-2 minutes. Subsequent requests are faster.
 
-**R2 not mounting:** Check that all three R2 secrets are set (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `CF_ACCOUNT_ID`). Note: R2 mounting only works in production, not with `wrangler dev`.
+**R2 not mounting:** Check that all three R2 secrets are set (`R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `CF_ACCOUNT_ID`). Note: R2 mounting only works in production, not with `wrangler dev`.
 
 **Access denied on admin routes:** Ensure `CF_ACCESS_TEAM_DOMAIN` and `CF_ACCESS_AUD` are set, and that your Cloudflare Access application is configured correctly.
 

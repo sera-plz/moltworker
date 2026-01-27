@@ -24,8 +24,8 @@ export interface ClawdbotEnv {
   CF_ACCESS_TEAM_DOMAIN?: string; // e.g., 'myteam.cloudflareaccess.com'
   CF_ACCESS_AUD?: string; // Application Audience (AUD) tag
   // R2 credentials for bucket mounting (set via wrangler secret)
-  AWS_ACCESS_KEY_ID?: string;
-  AWS_SECRET_ACCESS_KEY?: string;
+  R2_ACCESS_KEY_ID?: string;
+  R2_SECRET_ACCESS_KEY?: string;
   CF_ACCOUNT_ID?: string; // Cloudflare account ID for R2 endpoint
 }
 

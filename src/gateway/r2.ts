@@ -11,8 +11,8 @@ import { R2_MOUNT_PATH } from '../config';
  */
 export async function mountR2Storage(sandbox: Sandbox, env: ClawdbotEnv): Promise<boolean> {
   // Skip if R2 credentials are not configured
-  if (!env.AWS_ACCESS_KEY_ID || !env.AWS_SECRET_ACCESS_KEY || !env.CF_ACCOUNT_ID) {
-    console.log('R2 storage not configured (missing AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, or CF_ACCOUNT_ID)');
+  if (!env.R2_ACCESS_KEY_ID || !env.R2_SECRET_ACCESS_KEY || !env.CF_ACCOUNT_ID) {
+    console.log('R2 storage not configured (missing R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, or CF_ACCOUNT_ID)');
     return false;
   }
 
