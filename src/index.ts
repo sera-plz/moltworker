@@ -177,6 +177,11 @@ app.use('*', async (c, next) => {
     return next();
   }
   
+  // Skip auth for public static assets (logos, etc.)
+  if (url.pathname.endsWith('.png')) {
+    return next();
+  }
+  
   // Determine response type based on Accept header
   const acceptsHtml = c.req.header('Accept')?.includes('text/html');
   const middleware = createAccessMiddleware({ 
